@@ -58,18 +58,19 @@ enum custom_keycodes {
     M_BM = SAFE_RANGE,
     M_NEXT,
     M_BM_LST,
-    M_TPL,
     M_CS_I,
     M_BM_ADD2,
     M_ESC_to_RED,
-    M_8,
+    M_Trash,
+    M_Template,
     M_KVM_UP,
     M_KVM_DN,
     M_KVM_1,
     M_KVM_2,
     M_KVM_3,
     M_KVM_4,
-    M_Email_Del
+    M_Email_Del,
+    M_Next
 };
 
 
@@ -119,7 +120,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
    case M_NEXT:
         if (record->event.pressed) {
             // when keycode M_NEXT is pressed
-            SEND_STRING("next");
+            //SEND_STRING("next");
+
+            tap_code16_delay( S( KC_N ), 50);
+            tap_code16_delay( S( KC_E ), 50);
+            tap_code16_delay( S( KC_X ), 50);
+            tap_code16_delay( S( KC_T ), 50);
+
         } else {
             // when keycode M_NEXT is released
         }
@@ -137,44 +144,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-   case M_TPL:
-        if (record->event.pressed) {
-            // when keycode M_TPL is pressed
-            //SEND_STRING("QMK is the best thing ever!");
-            //SEND_STRING("TEMPLATE");
-//            tap_code(KC_T);
-//            tap_code(KC_E);
-//            tap_code(KC_M);
-//            tap_code(KC_P);
-//            tap_code(KC_L);
-//            tap_code(KC_A);
-//            tap_code(KC_T);
-//            tap_code(KC_E);
-//          This is still bringing up a windows prompt.
-//          Something else is going on
-//          It does type 'template' but also hits the windows key.
-//
-            register_code16(   S( KC_T ) );
-            unregister_code16( S( KC_T ) );
-            register_code16(   S( KC_E ) );
-            unregister_code16( S( KC_E ) );
-            register_code16(   S( KC_M ) );
-            unregister_code16( S( KC_M ) );
-            register_code16(   S( KC_P ) );
-            unregister_code16( S( KC_P ) );
-            register_code16(   S( KC_L ) );
-            unregister_code16( S( KC_L ) );
-            register_code16(   S( KC_A ) );
-            unregister_code16( S( KC_A ) );
-            register_code16(   S( KC_T ) );
-            unregister_code16( S( KC_T ) );
-            register_code16(   S( KC_E ) );
-            unregister_code16( S( KC_E ) );
 
-        } else {
-            // when keycode M_TPL is released
-        }
-        break;
+case M_Next:
+     if (record->event.pressed) {
+         // when keycode M_NEXT is pressed
+         //SEND_STRING("next");
+
+        tap_code16_delay( S( KC_N ), 20);
+        tap_code16_delay( S( KC_E ), 20);
+        tap_code16_delay( S( KC_X ), 20);
+        tap_code16_delay( S( KC_T ), 20);
+        tap_code16_delay( S( KC_COLN ), 20);
+
+     } else {
+         // when keycode M_NEXT is released
+     }
+     break;
+
 
    case M_CS_I: // CTL SFT I is used to Add DateTime in VS-Code
         if (record->event.pressed) {
@@ -214,14 +200,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
- case M_8:
+ case M_Trash:
         if (record->event.pressed) {
             // when keycode M_8 is pressed
             //SEND_STRING("QMK is the best thing ever!");
+            tap_code16_delay( S( KC_T ), 20);
+            tap_code16_delay( S( KC_E ), 20);
+            tap_code16_delay( S( KC_M ), 20);
+            tap_code16_delay( S( KC_P ), 20);
+            tap_code16_delay( S( KC_L ), 20);
+            tap_code16_delay( S( KC_A ), 20);
+            tap_code16_delay( S( KC_T ), 20);
+            tap_code16_delay( S( KC_E ), 20);
+
         } else {
             // when keycode M_8 is released
         }
         break;
+
+case M_Template:
+       if (record->event.pressed) {
+           // when keycode M_8 is pressed
+           //SEND_STRING("QMK is the best thing ever!");
+           tap_code16_delay( S( KC_T ), 20);
+           tap_code16_delay( S( KC_E ), 20);
+           tap_code16_delay( S( KC_M ), 20);
+           tap_code16_delay( S( KC_P ), 20);
+           tap_code16_delay( S( KC_L ), 20);
+           tap_code16_delay( S( KC_A ), 20);
+           tap_code16_delay( S( KC_T ), 20);
+           tap_code16_delay( S( KC_E ), 20);
+
+       } else {
+           // when keycode M_8 is released
+       }
+       break;
+
 
  case M_KVM_UP:
         if (record->event.pressed) {
@@ -365,9 +379,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LAYER1] = LAYOUT_tkl_ansi(
      _______,        KC_BRID,        KC_BRIU,        KC_TASK,        KC_FILE,        RGB_VAD,        RGB_VAI,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_VOLD,        KC_VOLU,                        RGB_HUI,        _______,        RGB_TOG,
      _______,        BT_HST1,        BT_HST2,        BT_HST3,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        M_KVM_1,        M_KVM_2,        M_KVM_UP,
-     KC_F5,          KC_F6,          KC_F7,          KC_F8,          RGB_SAI,        M_TPL,          _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        M_KVM_3,        M_KVM_4,        M_KVM_DN,
+     KC_F5,          KC_F6,          KC_F7,          KC_F8,          RGB_SAI,        M_Template,     M_Trash,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        M_KVM_3,        M_KVM_4,        M_KVM_DN,
      _______,        RGB_RMOD,       RGB_VAD,        M_CS_I,         RGB_SAD,        RGB_SPD,        _______,        _______,        M_BM,           M_BM_LST,       _______,        _______,                        _______,
-     _______,                        _______,        RGB_HUD,        _______,        _______,        BAT_LVL,        M_NEXT,         M_ESC_to_RED,   _______,        _______,        _______,                        _______,                        RGB_VAI,
+     _______,                        _______,        RGB_HUD,        _______,        _______,        BAT_LVL,        M_Next,         M_ESC_to_RED,   _______,        _______,        _______,                        _______,                        RGB_VAI,
      _______,        _______,        _______,                                                        _______,                                                        _______,        _______,        _______,        _______,        RGB_SAD,        RGB_VAD,        RGB_SAI),
 
 [_LAYER2] = LAYOUT_tkl_ansi(
@@ -447,7 +461,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_LAYER7] = LAYOUT_tkl_ansi(
-     _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,                        _______,        _______,        _______,
+     _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,                        _______,        _______,        QK_BOOT,
      _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,
      _______,        _______,        _______,         EE_CLR,        _______,        _______,        _______,        KC_F2,          _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,
      _______,        _______,        _______,        M_Email_Del,    _______,        _______,        KC_F5,          KC_F7,          KC_F8,          KC_F6,          _______,        _______,                        _______,
