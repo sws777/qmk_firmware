@@ -1,0 +1,13 @@
+git add ./keyboards/keychron/k8_pro/ansi/rgb/keymaps/sws_test/keymap.c
+git status
+git commit -m "06.12.24 - sws_test/keymap.c - Custom Keycode Changes: Removed  M_TPL, M_8 Added  M_Trash, M_Template.
+case M_NEXT changed to M_Next and changed to use tap_code16_delay( S( KC_X ), 50); for sending key presses.
+case M_Trash is the original M_8 - M_TEMPLATE macro, with the corruption at the end with KC_GUI key.
+case M_Template is the new version that works.
+Updates to [_LAYER1] keymap:
+Key T: Removed M_TPL, Added M_Template
+Key Y (for testing): Added M_Trash (Corrupted old M_TEMPLATE macro)
+Key N: Removed M_NEXT, Added M_Next
+Updates to [_LAYER7] keymap:
+Key PgUp: Added QK_BOOT"
+

@@ -1,4 +1,4 @@
-/* Copyright 2021 @ Keychron (https://www.keychron.com)
+ /* Copyright 2021 @ Keychron (https://www.keychron.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,25 +19,25 @@
 void keyboard_post_init_user(void) {
     rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
     rgb_matrix_sethsv_noeeprom(HSV_OFF);
+    keymap_config.nkro = 0; // Default NKRO to OFF
 }
 
 
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(50, 255, 255, 255); // assuming caps lock is at led #5
+        //RGB_MATRIX_INDICATOR_SET_COLOR(50, 255, 255, 255); // assuming caps lock is at led #5
+        RGB_MATRIX_INDICATOR_SET_COLOR(50, 0, 0, 255); // Blue when toggled
     } else {
-        RGB_MATRIX_INDICATOR_SET_COLOR(50, 50, 0, 0);
+        //RGB_MATRIX_INDICATOR_SET_COLOR(50, 50, 0, 0);
+        RGB_MATRIX_INDICATOR_SET_COLOR(50, 255, 255, 255); // White when not toggled
     }
 
     RGB_MATRIX_INDICATOR_SET_COLOR(33, 0, 255, 0); // Tab set to Green
-    RGB_MATRIX_INDICATOR_SET_COLOR(62, 255, 0, 0); // Enter set to Red
+    RGB_MATRIX_INDICATOR_SET_COLOR(62, 0, 255, 0); // Enter set to Green
 
     return false;
 }
-
-
-
 
 // clang-format off
 enum layers{
@@ -368,7 +368,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //Test layer with wider spacing. 14 characters per column.
 [_LAYER0] = LAYOUT_tkl_ansi(
-     KC_ESC,         KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,                         KC_PSCR,        MO(1),          RGB_MOD,
+     KC_ESC,         KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,                         KC_SCRL,        MO(1),          RGB_MOD,
      KC_GRV,         KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINS,        KC_EQL,         KC_BSPC,        KC_INS,         KC_HOME,        KC_PGUP,
      KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_LBRC,        KC_RBRC,        KC_BSLS,        KC_DEL,         KC_END,         KC_PGDN,
      LT(7,KC_CAPS),  KC_A,           KC_S,           KC_D,           KC_F,           KC_G,           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_QUOT,                        KC_ENT,
@@ -463,7 +463,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LAYER7] = LAYOUT_tkl_ansi(
      _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,                        _______,        _______,        QK_BOOT,
      _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-     _______,        _______,        _______,         EE_CLR,        _______,        _______,        _______,        KC_F2,          _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+     _______,        _______,        _______,        _______,        _______,        _______,        _______,        KC_F2,          _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,
      _______,        _______,        _______,        M_Email_Del,    _______,        _______,        KC_F5,          KC_F7,          KC_F8,          KC_F6,          _______,        _______,                        _______,
      _______,                        _______,        _______,        _______,        _______,        _______,        KC_F3,          _______,        _______,        _______,        _______,                        _______,                        NK_ON,
      _______,        _______,        _______,                                                        _______,                                                        _______,        _______,        _______,        _______,        NK_TOGG,        NK_OFF,         NK_TOGG)
