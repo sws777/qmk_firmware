@@ -379,7 +379,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LAYER1] = LAYOUT_tkl_ansi(
      _______,        KC_BRID,        KC_BRIU,        KC_TASK,        KC_FILE,        RGB_VAD,        RGB_VAI,        KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_VOLD,        KC_VOLU,                        RGB_HUI,        _______,        RGB_TOG,
      _______,        BT_HST1,        BT_HST2,        BT_HST3,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        M_KVM_1,        M_KVM_2,        M_KVM_UP,
-     KC_F5,          KC_F6,          KC_F7,          KC_F8,          RGB_SAI,        M_Template,     M_Trash,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        M_KVM_3,        M_KVM_4,        M_KVM_DN,
+     KC_F5,          KC_F6,          KC_F7,          KC_F8,          KC_F5,          M_Template,     M_Trash,        _______,        _______,        _______,        _______,        _______,        _______,        _______,        M_KVM_3,        M_KVM_4,        M_KVM_DN,
      _______,        RGB_RMOD,       RGB_VAD,        M_CS_I,         RGB_SAD,        RGB_SPD,        _______,        _______,        M_BM,           M_BM_LST,       _______,        _______,                        _______,
      _______,                        _______,        RGB_HUD,        _______,        _______,        BAT_LVL,        M_Next,         M_ESC_to_RED,   _______,        _______,        _______,                        _______,                        RGB_VAI,
      _______,        _______,        _______,                                                        _______,                                                        _______,        _______,        _______,        _______,        RGB_SAD,        RGB_VAD,        RGB_SAI),
@@ -481,7 +481,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-//
+// LED numbering
 //led_config_t g_led_config = {
 //	{
 //		{  0,      1,      2,      3,      4,      5,      6,      7,      8,      9,      10,     11,     12,     NO_LED, 13,     14,     15 },
