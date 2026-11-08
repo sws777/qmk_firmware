@@ -398,7 +398,7 @@ void ckbt51_radio_test(uint8_t channel) {
 }
 
 void ckbt51_dfu_tx(uint8_t rsp, uint8_t* data, uint8_t len, uint8_t sn) {
-    uint16_t checksum        = 0;
+    // uint16_t checksum        = 0; // Removed for compliation errors
     uint8_t  buf[RAW_EPSIZE] = {0};
     uint8_t  i               = 0;
 
@@ -412,8 +412,9 @@ void ckbt51_dfu_tx(uint8_t rsp, uint8_t* data, uint8_t len, uint8_t sn) {
     memcpy(&buf[i], data, len);
     i += len;
 
-    for (uint8_t k = 0; k < i; k++)
-        checksum += buf[i];
+    // Removed for compliation errors
+    // for (uint8_t k = 0; k < i; k++)
+    //    checksum += buf[i];
 
     raw_hid_send(buf, RAW_EPSIZE);
 
